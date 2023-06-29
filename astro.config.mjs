@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import rehypeExternalLinks from "rehype-external-links";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -14,6 +15,14 @@ export default defineConfig({
       // Enable word wrap to prevent horizontal scrolling
       wrap: true,
     },
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          content: { type: "text", value: " 🔗" },
+        },
+      ],
+    ],
   },
   trailingSlash: "always",
 });
